@@ -9,7 +9,9 @@ import { TWEET_API_END_POINT } from "../Utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { getRefresh } from "../redux/tweetSlice";
 import toast from "react-hot-toast";
-import  {timeSince} from '../Utils/constant'
+import { timeSince } from "../Utils/constant";
+
+//password database  w2azCaBb9IwOgxRO   m4BN9XUSTfCi9ar4
 
 function Tweet({ tweet }) {
   const { user } = useSelector((store) => store.user);
@@ -39,10 +41,9 @@ function Tweet({ tweet }) {
   //delete tweet------
   const deleteHandler = async (id) => {
     try {
-      const res = await axios.delete(
-        `${TWEET_API_END_POINT}/delete/${id}`,
-        { withCredentials: true }
-      );
+      const res = await axios.delete(`${TWEET_API_END_POINT}/delete/${id}`, {
+        withCredentials: true,
+      });
 
       dispatch(getRefresh());
       toast.success(res.data.message);
@@ -61,7 +62,9 @@ function Tweet({ tweet }) {
         <div className="p-4 w-full">
           <div className="flex items-center ">
             <h1 className="font-bold ">{tweet?.userDetails[0]?.name}</h1>
-            <p className="text-gray-500 text-sm ml-2">{`@${tweet?.userDetails[0]?.username} . ${timeSince(tweet?.createdAt)}`}</p>
+            <p className="text-gray-500 text-sm ml-2">{`@${
+              tweet?.userDetails[0]?.username
+            } . ${timeSince(tweet?.createdAt)}`}</p>
           </div>
           <div>
             <p>{tweet?.description} </p>
