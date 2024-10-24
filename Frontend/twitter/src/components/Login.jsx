@@ -127,7 +127,7 @@ function Login() {
             className="outline-blue-500 border border-gray-800 px-4 py-1 rounded-full my-1 font-semibold"
           />
           <button className="px-4 py-2 mt-2 border-none rounded-full  text-white font-bold bg-[#1D9BF0]">
-            Post
+          {islogin ? "Login" : "Signup"}
           </button>
           <h1 className="mt-2">
             {islogin ? "Do have not an account" : " Already have a account"}
